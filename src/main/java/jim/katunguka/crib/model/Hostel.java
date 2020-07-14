@@ -7,6 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import java.util.ArrayList;
+import java.util.List;
 
 @Document(collection = "Hostels")
 public class Hostel {
@@ -15,14 +17,15 @@ public class Hostel {
     private long hostelId;
     private String name;
     private String institution;
-
     private Address address;
+    private List<Room> rooms;
 
     public Hostel(String name, String institution, Address address) {
         super();
         this.name = name;
         this.institution = institution;
         this.address = address;
+        this.rooms = new ArrayList<>();
     }
 
     public Hostel() {
@@ -58,5 +61,13 @@ public class Hostel {
 
     public void setInstitution(String institution) {
         this.institution = institution;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
     }
 }
