@@ -1,16 +1,15 @@
 package jim.katunguka.crib.model;
 
-import org.hibernate.annotations.Generated;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-@Document(collection = "Hostels")
+@Document(collection = "hostels")
 public class Hostel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +17,8 @@ public class Hostel {
     private String name;
     private String institution;
     private Address address;
+
+    @OneToMany
     private List<Room> rooms;
 
     public Hostel(String name, String institution, Address address) {
